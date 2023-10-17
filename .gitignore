@@ -5,3 +5,4 @@ src/public/testData
 makeCleanCommit_fish.sh
 *.log
 dist
+
