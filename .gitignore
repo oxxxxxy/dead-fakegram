@@ -1,0 +1,7 @@
+node_modules
+src/config.js
+src/public/testData
+#src/draftHTMLs/trash
+makeCleanCommit_fish.sh
+*.log
+dist

@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" href="../public/testData/css/fakegram1.css">
+  <!-- some meta??? progressive webapps??? -->
+  <title>Fakegram</title>
+
+<!-- DRAFT -->
+<style>/*general*/
+  a,
+  abbr,
+  acronym,
+  address,
+  applet,
+  article,
+  aside,
+  audio,
+  b,
+  big,
+  blockquote,
+  body,
+  canvas,
+  caption,
+  center,
+  cite,
+  code,
+  dd,
+  del,
+  details,
+  dfn,
+  div,
+  dl,
+  dt,
+  em,
+  embed,
+  fieldset,
+  figcaption,
+  figure,
+  footer,
+  form,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  header,
+  hgroup,
+  html,
+  i,
+  iframe,
+  img,
+  ins,
+  kbd,
+  label,
+  legend,
+  li,
+  mark,
+  menu,
+  nav,
+  object,
+  ol,
+  output,
+  p,
+  pre,
+  q,
+  ruby,
+  s,
+  samp,
+  section,
+  small,
+  span,
+  strike,
+  strong,
+  sub,
+  summary,
+  sup,
+  table,
+  tbody,
+  td,
+  tfoot,
+  th,
+  thead,
+  time,
+  tr,
+  tt,
+  u,
+  ul,
+  var,
+  video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    vertical-align: baseline
+  }
+
+  body {
+    line-height: 1
+  }
+
+  ol,
+  ul {
+    list-style: none
+  }
+
+  blockquote,
+  q {
+    quotes: none
+  }
+
+  blockquote:after,
+  blockquote:before,
+  q:after,
+  q:before {
+    content: none
+  }
+
+  table {
+    border-collapse: collapse;
+    border-spacing: 0
+  }
+
+  .general-container,
+  article,
+  div,
+  footer,
+  header,
+  main,
+  nav,
+  section {
+    -webkit-box-align: stretch;
+    -webkit-align-items: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    border: 0 solid #000;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-flex-shrink: 0;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    margin: 0;
+    padding: 0;
+    position: relative
+  }
+
+  body {
+    overflow-y: scroll;
+  }
+
+  body:-webkit-full-screen {
+    height: 100%;
+    width: 100%
+  }
+
+  body:-moz-full-screen {
+    height: 100%;
+    width: 100%
+  }
+
+  body:-ms-fullscreen {
+    height: 100%;
+    width: 100%
+  }
+
+  body:fullscreen {
+    height: 100%;
+    width: 100%
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%
+  }
+
+  .general-container,
+  body,
+  html {
+    height: 100%
+  }
+
+  .general-container {
+    z-index: 0
+  }
+
+  body,
+  button,
+  input,
+  textarea {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 18px
+  }
+
+  button {
+    background: 0 0;
+    border: 0;
+    cursor: pointer
+  }
+
+  a,
+  a:visited {
+    color: #003569;
+    text-decoration: none
+  }
+
+  a:active {
+    opacity: .5
+  }
+</style>
+<style>/*acss-like*/
+  .align-items--stretch {
+    -webkit-box-align: stretch;
+    -webkit-align-items: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch
+  }
+
+  .align-items--flex-start {
+    -webkit-box-align: start;
+    -webkit-align-items: flex-start;
+    -ms-flex-align: start;
+    align-items: flex-start
+  }
+
+  .align-items--center {
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center
+  }
+
+  .display--flex {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex
+  }
+
+  .flex-direction--column {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column
+  }
+
+  .flex-direction--row{
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row
+  }
+
+  .justify-content--center {
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center
+  }
+
+  .justify-content--space-between{
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between
+  }
+
+  .flex-grow--1{
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1
+  }
+
+  .flex-shrink--1 {
+    -webkit-flex-shrink: 1;
+    -ms-flex-negative: 1;
+    flex-shrink: 1
+  }
+</style>
+<style>/*BEM-like*//*Navigation*/
+  .GC__navigation-container {
+    position: absolute;
+    width: 100%;
+    height: 100%
+  }
+
+  .GC_NC__header, .GC_NC__footer {
+    z-index: 900;
+    position: absolute;
+    width: 100%;
+    height: 50px
+  }
+
+  .GC_NC__header {
+    top: 0
+  }
+
+  .GC_NC__footer {
+    bottom: 0
+  }
+
+  .GC_NC_FandH__container {
+    position: fixed;
+    width: 702px;
+    z-index: 1;
+    height: 50px;
+    background-color: #fff;
+    border-right: 1px solid rgba(0, 0, 0, .0975);
+    border-left: 1px solid rgba(0, 0, 0, .0975)
+  }
+
+  .GC_NC_F__container {
+    border-top: 1px solid rgba(0, 0, 0, .0975)
+  }
+
+  .GC_NC_H__container {
+    border-bottom: 1px solid rgba(0, 0, 0, .0975)
+  }
+
+  .GC_NC_H_C__nav-elements-container,
+  .GC_NC_F_C__nav-elements-container {
+    width: 100%;
+    height: 50px;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal
+  }
+
+  .GC_NC_H_C__nav-elements-container--feed {
+    padding-left:23px;
+    padding-right:6px
+  }
+
+  .GC_NC_F_C_NEC__navigation {
+    width: 650px
+  }
+
+  .GC_NC_F_C_NEC_N__button {
+    padding: 10px 40px
+  }
+
+  .GC_NC_H_C_NEC__button {
+    padding: 13px
+  }
+
+  .GC_NC_H_C_NEC_FN__fakegram-logo-button{
+    padding: 0px;
+    margin-left: 23px
+  }
+
+  @media only screen and (max-width: 700px) {
+
+    .GC_NC_FandH__container {
+      width: 100%
+    }
+
+    .GC_NC_H_C__nav-elements-container--feed {
+      padding-left:3.5vw;
+      padding-right:1vw
+    }
+
+    .GC_NC_F_C_NEC__navigation {
+      width: 96vw
+    }
+
+    .GC_NC_F_C_NEC_N__button {
+      padding-left: 4vw;
+      padding-right: 4vw
+    }
+
+    .GC_NC_H_C_NEC__button {
+      padding: 2.5vw
+    }
+
+
+  }
+
+</style>
+<style>/*BEM-like*//*Content*/
+
+  .GC__content-container {
+    min-height: 100%;
+    overflow: hidden;
+    background-color: #fafafa
+  }
+
+  .GC_CC__content-section,
+  .GC_CC__content-section-loading {
+    max-width: 700px;
+    width: 100%
+  }
+
+  .GC_CC__content-section {
+    padding-top: 50px;
+    position: relative
+  }
+
+  .GC_CC__content-section-loading {
+    position: absolute;
+    z-index: 0;
+    height: 100vh;
+    background-color: #fff
+  }
+
+  .GC_CC_CSL__loading-flicker {
+    animation-name: flick;
+    animation-duration: 0.8s;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+  }
+
+  @keyframes flick {
+    from {
+      opacity: 1
+    }
+    to {
+      opacity: 0.1
+    }
+  }
+
+
+</style>
+<style>/*sprites*/
+  .spriteTextLogo__fakegramNav,
+  .spriteGlyph__direct,
+  .spriteGlyph__fakegramLoading__80px,
+  .spriteGlyph__home__filled,
+  .spriteGlyph__home__outline,
+  .spriteGlyph__search__filled,
+  .spriteGlyph__search__outline,
+  .spriteGlyph__newPost__outline,
+  .spriteGlyph__heart__filled,
+  .spriteGlyph__heart__outline,
+  .spriteGlyph__heart__filled__red,
+  .spriteGlyph__profile__outline,
+  .spriteGlyph__profile__filled {
+    background-repeat: no-repeat;
+    background-image: url(../public/media/fakegramSprites.png)
+  }
+
+  .spriteTextLogo__fakegramNav {
+    height: 39px;
+    width: 127px
+  }
+
+  .spriteGlyph__direct {
+    background-position: 0px -40px;
+    height: 20px;
+    width: 22px
+  }
+
+  .spriteGlyph__fakegramLoading__80px {
+    background-position: -127px 0px;
+    height: 80px;
+    width: 80px
+  }
+
+  .spriteGlyph__home__filled{
+    background-position: -102px -39px;
+    height: 25px;
+    width: 26px
+  }
+
+  .spriteGlyph__home__outline{
+    background-position: -102px -65px;
+    height: 24px;
+    width: 23px
+  }
+
+  .spriteGlyph__search__filled{
+    background-position: -45px -65px;
+    height: 24px;
+    width: 24px
+  }
+
+  .spriteGlyph__search__outline{
+    background-position: -71px -65px;
+    height: 24px;
+    width: 24px
+  }
+
+  .spriteGlyph__search__outline{
+    background-position: -71px -65px;
+    height: 24px;
+    width: 24px
+  }
+
+  .spriteGlyph__newPost__outline{
+    background-position: 0px -91px;
+    height: 23px;
+    width: 23px
+  }
+
+  .spriteGlyph__heart__filled{
+    background-position: -24px -41px;
+    height: 23px;
+    width: 24px
+  }
+
+  .spriteGlyph__heart__outline{
+    background-position: -76px -41px;
+    height: 23px;
+    width: 24px
+  }
+
+  .spriteGlyph__heart__filled__red{
+    background-position: -50px -41px;
+    height: 23px;
+    width: 24px
+  }
+
+  .spriteGlyph__profile__outline{
+    background-position: -25px -91px;
+    height: 24px;
+    width: 22px
+  }
+
+  .spriteGlyph__profile__filled{
+    background-position: -51px -91px;
+    height: 24px;
+    width: 22px
+  }
+</style>
+</head>
+<body>
+  <div class="general-container">
+    <div class="GC__navigation-container">
+      <nav class="GC_NC__header align-items--center">
+        <div class="GC_NC_FandH__container GC_NC_H__container align-items--center">
+          <div class="GC_NC_H_C__nav-elements-container GC_NC_H_C__nav-elements-container--feed flex-direction--row align-items--center">
+            <div class="align-items--flex-start flex-grow--1 flex-shrink--1">
+              <a>
+                <button class="display--flex" style="top:8px;position:fixed;padding:0px">
+                  <span class="spriteTextLogo__fakegramNav"></span>
+                </button>
+              </a>
+            </div>
+            <a>
+              <button class="GC_NC_H_C_NEC__button display--flex">
+                <span class="spriteGlyph__direct"></span>
+              </button>
+            </a>
+          </div>
+
+          <!-- search, activity, profile -->
+
+        </div>
+      </nav>
+      <nav class="GC_NC__footer align-items--center">
+        <div class="GC_NC_FandH__container GC_NC_F__container align-items--center">
+          <div class="GC_NC_F_C__nav-elements-container justify-content--center align-items--center">
+            <div class="GC_NC_F_C_NEC__navigation flex-direction--row justify-content--space-between">
+              <a>
+                <button class="GC_NC_F_C_NEC_N__button display--flex active_main_bttn" id="main_menu_btn">
+                      <!--a href="#/feed"-->
+                  <span class="spriteGlyph__home__filled"></span>
+                </button>
+              </a>
+              <a>
+                <button class="GC_NC_F_C_NEC_N__button display--flex" id="main_menu_btn">
+                      <!--a href="#/search"-->
+                  <span class="spriteGlyph__search__outline"></span>
+                </button>
+              </a>
+              <a>
+                <button class="GC_NC_F_C_NEC_N__button display--flex" id="main_menu_btn">
+                    <!--a href="#/adding"-->
+                  <span class="spriteGlyph__newPost__outline"></span>
+                </button>
+              </a>
+              <a>
+                <button class="GC_NC_F_C_NEC_N__button display--flex" id="main_menu_btn">
+                    <!--a href="#/activity"-->
+                  <span class="spriteGlyph__heart__outline"></span>
+                </button>
+              </a>
+              <a>
+                <button class="GC_NC_F_C_NEC_N__button display--flex" id="main_menu_btn">
+                    <!--a href="#/profile"-->
+                  <span class="spriteGlyph__profile__outline"></span>
+                </button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <div class="GC__content-container align-items--center">
+      <section class="GC_CC__content-section-loading align-items--center justify-content--center">
+        <div class="GC_CC_CSL__loading-flicker spriteGlyph__fakegramLoading__80px"></div>
+      </section>
+    </div>
+  </div>
+
+
+</body>
+
+</html>
